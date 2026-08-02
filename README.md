@@ -1,123 +1,156 @@
-# 🏛️ SamvidhanAI - Constitutional Rights Defender for Marginalized Communities
+# SamvidhanAI
+### AI-Powered Voice Assistant for Government Scheme Access
 
-<div align="center">
+SamvidhanAI is an **AI-powered voice-first platform** that helps citizens easily **discover, apply for, and track government welfare schemes**.
 
-![SamvidhanAI Banner](https://img.shields.io/badge/AI-Powered-blue?style=for-the-badge)
-![Voice First](https://img.shields.io/badge/Voice-First-green?style=for-the-badge)
-![Impact](https://img.shields.io/badge/Impact-400M%2B%20Users-orange?style=for-the-badge)
-![Languages](https://img.shields.io/badge/Languages-22%2B-red?style=for-the-badge)
+The platform simplifies complex government processes using **Artificial Intelligence, Voice Interaction, and Serverless AWS Architecture**.
 
-**Empowering 400 million Indians to claim their constitutional rights through AI-powered voice assistance**
+The goal of SamvidhanAI is to **make government welfare services accessible, transparent, and easy to use for every citizen.**
 
-</div>
+---
 
-##  DEMO LINK:https://main.dncm4n3otq2zu.amplifyapp.com/
+# 📌 Problem Statement
 
-## Overview
+Many citizens are **unaware of government welfare schemes** they are eligible for.
 
-SamvidhanAI is a voice-first AI platform that democratizes access to government welfare schemes for India's 400M+ marginalized citizens. The system addresses the critical problem of ₹1.3 lakh crore in unclaimed welfare funds by providing an accessible, multi-language interface that guides users through scheme discovery, application, and tracking.
+Even when they know about them, the **application process is complex** and requires navigating multiple government portals.
 
-### Core Design Principles
+This creates barriers especially for:
 
-1. **Voice-First**: All interactions prioritize voice over text, with voice as the primary interface
-2. **Offline-Resilient**: System degrades gracefully to SMS/USSD when internet is unavailable
-3. **Privacy-Preserving**: End-to-end encryption for sensitive data, federated learning for AI improvements
-4. **Accessibility-Focused**: WCAG 2.1 AA compliant, works with assistive technologies
-5. **Scalable**: Horizontally scalable microservices architecture supporting millions of users
-6. **Government-Integrated**: Direct integration with DigiLocker, UMANG, Aadhaar eKYC
+- Rural populations
+- Non-technical users
+- Citizens unfamiliar with digital government systems
 
-### System Context
+---
 
-The platform serves four primary user personas:
-- **Illiterate domestic workers**: Feature phone, 2G connectivity, regional dialect speakers
-- **Tribal farmers**: Basic smartphone, intermittent 3G, distrust of officials
-- **Persons with disabilities**: Smartphone with screen reader, accessibility requirements
-- **NGO field workers**: Manage 50+ families, need bulk operations and dashboards
+# 💡 Solution
 
-### Technology Stack
+SamvidhanAI allows users to **simply speak or type their needs**, and the system will:
 
-**Backend:**
-- **Framework**: FastAPI (Python 3.11+)
-- **Database**: PostgreSQL 15
-- **Cache/Queue**: Redis + Celery
-- **Storage**: AWS S3 / GCP Cloud Storage
+1. Understand the request using AI
+2. Identify relevant government schemes
+3. Guide the user through the application process
+4. Generate an official application document
+5. Allow the user to track application status
 
-**AI/ML:**
-- **LLM**: Claude API
-- **Speech (STT/TTS)**: Bhashini API
-- **RAG**: LangChain + Pinecone
-- **OCR**: Tesseract + Google Vision API
+---
 
-**Frontend:**
-- **Web**: Next.js 14 (React 18, TypeScript)
-- **Mobile**: React Native
-- **UI**: Tailwind CSS + shadcn/ui
+# 🚀 Key Features
 
-**Communication:**
-- **IVR**: Twilio / Exotel
-- **WhatsApp**: WhatsApp Business API
-- **SMS**: Twilio / AWS SNS
+🎤 **Voice-Based Interaction**  
+Users can interact with the system using voice or text queries.
 
-**Infrastructure:**
-- **Cloud**: AWS / GCP
-- **Containers**: Docker + Kubernetes
-- **CI/CD**: GitHub Actions
-- **Monitoring**: Prometheus + Grafana
-- **Logging**: ELK Stack
+🤖 **AI-Powered Scheme Identification**  
+Amazon Bedrock analyzes user queries to detect relevant government schemes.
 
-## Components and Interfaces
+📝 **Smart Application Generation**  
+The system collects user details and generates an application automatically.
 
-### 1. Voice Service
+📄 **Official PDF Generation**  
+A government-style PDF document is generated with QR verification.
 
-**Responsibility**: Handle voice interactions, speech-to-text, text-to-speech, language detection
+📊 **Application Tracking Dashboard**  
+Users can monitor the progress of their applications.
 
-**Key Components:**
-- `VoiceController`: REST endpoints for voice interactions
-- `SpeechToTextAdapter`: Interface to Bhashini STT API
-- `TextToSpeechAdapter`: Interface to Bhashini TTS API
-- `LanguageDetector`: Identify spoken language from audio
-- `AudioProcessor`: Handle audio format conversion, noise reduction
+🔐 **Secure Authentication**  
+User identity and login are handled securely through AWS Cognito.
 
-### 2. Discovery Service (Rights Discovery Engine)
+☁️ **Serverless Architecture**  
+Built using scalable AWS services ensuring reliability and cost efficiency.
 
-**Responsibility**: Match users to eligible schemes, retrieve scheme information via RAG
+---
 
-**Key Components:**
-- `DiscoveryController`: REST endpoints for scheme discovery
-- `EligibilityMatcher`: Evaluate user profile against scheme criteria
-- `RAGPipeline`: Retrieve and generate scheme information
-- `SchemeRepository`: Database access for scheme data
-- `VectorSearchAdapter`: Interface to Pinecone vector database
+# 🏗 System Architecture
 
-### 3. Application Service
+The system uses a **serverless AWS architecture**.
 
-**Responsibility**: Guide form filling, extract data, generate PDFs, submit to government portals
+User (Voice / Text)
 
-**Key Components:**
-- `ApplicationController`: REST endpoints for application management
-- `ConversationalFormFiller`: LLM-based form filling conversation
-- `DataExtractor`: Extract structured data from voice/text
-- `OCRProcessor`: Extract text from document images
-- `FormGenerator`: Generate PDF forms from templates
-- `GovernmentPortalAdapter`: Submit to DigiLocker, UMANG, etc.
 
-### 4. Tracking Service
+AWS Amplify (Frontend Hosting)
 
-**Responsibility**: Monitor application status, scrape government portals, trigger escalations
 
-**Key Components:**
-- `TrackingController`: REST endpoints for status tracking
-- `StatusScraper`: Scrape government portals for status updates
-- `EscalationEngine`: Detect delays and trigger escalations
-- `GrievanceGenerator`: Generate and file grievance applications
-- `RTIGenerator`: Generate RTI applications
+Amazon Cognito (Authentication)
 
-### 5. Community Service
 
-**Responsibility**: Aggregate community statistics, detect patterns, enable peer support
+Amazon API Gateway
 
-**Key Components:**
-- `CommunityController`: REST endpoints for community features
-- `StatisticsAggregator`: Calculate community metrics
-- `PatternDetector`: Detect corruption and anomalies
-- `FederatedLearningCoordinator`: Privacy-preserving model updates
+
+AWS Lambda (Backend Processing)
+
+
+├── Amazon Bedrock (AI Processing)
+
+├── Amazon DynamoDB (Application Data)
+
+└── Amazon S3 (PDF Storage)
+
+
+**AWS IAM** manages secure permissions between services.
+
+---
+
+# 🛠 Technologies Used
+
+## Frontend
+- Next.js
+- React
+- TypeScript
+- TailwindCSS
+- Web Speech API
+
+## Backend
+- AWS Lambda
+- Amazon API Gateway
+- Amazon Bedrock (Nova Pro)
+
+## Database & Storage
+- Amazon DynamoDB
+- Amazon S3
+
+## Authentication
+- Amazon Cognito
+
+## Deployment
+- AWS Amplify
+
+## Libraries
+- PDFKit (PDF generation)
+- QRCode (QR verification)
+- AWS SDK
+
+---
+
+# ☁️ AWS Services Used
+
+| AWS Service | Purpose |
+|-------------|--------|
+| AWS Amplify | Frontend hosting and CI/CD |
+| Amazon Cognito | User authentication and email OTP verification |
+| Amazon API Gateway | API management |
+| AWS Lambda | Serverless backend functions |
+| Amazon Bedrock | AI model for natural language understanding |
+| Amazon DynamoDB | Application and scheme database |
+| Amazon S3 | Storage for generated PDFs |
+| AWS IAM | Secure permissions between services |
+
+---
+
+# 🔮 Future Enhancements
+
+- Multilingual support for more Indian languages
+- Mobile application for Android and iOS
+- Integration with official government portals
+- AI-based eligibility prediction
+- DigiLocker integration for document verification
+
+---
+
+# 👨‍💻 Project Developed For
+
+**SamvidhanAI**  
+AI-driven platform to simplify access to government welfare schemes.
+
+Built using **AWS Serverless Architecture + AI (Amazon Bedrock)**.
+
+---
